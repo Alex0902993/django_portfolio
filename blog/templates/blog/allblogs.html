@@ -74,16 +74,6 @@
             -webkit-overflow-scrolling: touch;
         }
 
-        footer {
-            background-color: #212529; /* Dark background for footer */
-            color: white; /* Ensures text is visible on dark background */
-        }
-
-        footer .container {
-            background-color: #212529; /* Match footer color */
-            color: white;
-        }
-
     </style>
 
 
@@ -110,7 +100,7 @@
                         <a class="nav-link" href="#">Resume</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Blog</a>
+                        <a class="nav-link active" href="#">Blog</a>
                     </li>
                 </ul>
             </div>
@@ -119,40 +109,29 @@
 
 </header>
 
-<main>
+<main role="main">
 
-    <section class="py-5 text-center container">
-        <div class="row py-lg-5">
-            <div class="col-lg-6 col-md-8 mx-auto">
-                <h1 class="fw-light">Hi, I'm Aleksandar</h1>
-                <p class="lead text-muted">Hey, my name is Aleksandar Vujić and I'm learning making websites in
-                    Django.</p>
-                <p>
-                    <a href="mailto:aleksandar.vujic@yandex.com" class="btn btn-primary my-2">Email me!</a>
-                </p>
-            </div>
-        </div>
-    </section>
+<div class="container">
 
-    <div class="album py-5 bg-light">
-        <div class="container">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <h1 class="text-center pt-3">Welcome to my Blog</h1>
+    <br />
+    <br />
+    <h2>Latest Posts</h2>
+    <hr />
 
-                {% for job in jobs.all %}
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <img class="card-img-top" src="{{ job.image.url }}">
-                            <div class="card-body">
-                                <p class="card-text">{{ job.summary }}</p>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
+    {% for blog in blogs.all  %}
+       <a href=""><h3>{{ blog.title }}</h3></a>
+        {{ blog.pub_date_pretty }}
+        <br/>
+        <img class="img-fluid" src="{{ blog.image.url }}" height="200" width="200" />
+        <br>
+        <p>{{ blog.summary }}</p>
+    {% endfor %}
 
 
-            </div>
-        </div>
-    </div>
+
+</div>
+
 </main>
 
 <footer class="text-muted py-5">
